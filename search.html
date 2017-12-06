@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-filter-filter-production</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- <script type="text/javascript" src="js/angular.min.js"></script> -->
+
+
+  <script type="text/javascript" src="angular.min copy.js"></script>
+  <script type="text/javascript" src="search.js"></script>
+
+
+</head>
+<body ng-app="">
+  <h2>Phone Book</h2>
+  <button type="button" class="btn btn-info btn-lg pull-right" id="add" data-toggle="modal" data-target="#myModal">Add new</button>
+  <hr>
+
+
+  <div ng-init="friends = [{name:'John', phone:'555-1276'},
+                         {name:'Mary', phone:'800-BIG-MARY'},
+                         {name:'Mike', phone:'555-4321'},
+                         {name:'Adam', phone:'555-5678'},
+                         {name:'Julie', phone:'555-8765'},
+                         {name:'Juliette', phone:'555-5678'}]"></div>
+
+                         <form id="form" action="#" method="POST">
+                         <input id="description" name="description" type="text" />
+                           <input id="add" type="submit" value="Add" />
+                             <button id="clear">Clear All</button>
+                         </form>
+                        <div id="alert"></div>
+
+                         <ul id="todos"></ul>
+
+
+
+                         <label>Search: <input ng-model="searchText" placeholder="Search"></label>
+                         <table id="searchTextResults" class="table table-striped">
+
+                           <tr ng-repeat="friend in friends | filter:searchText">
+                             <thead>
+                               <tr>
+
+                                 <th>Name</th>
+                                 <th>Phone</th>
+                                 <th>Edit</th>
+                                 <th>Delete</th>
+                               </tr>
+                             </thead>
+                           <tbody>
+                             <tr ng-repeat="friend in friends | filter:searchText">
+                               <td>{{friend.name}}</td>
+                               <td>{{friend.phone}}</td>
+                               <td>
+                                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalEdit" ng-click="selectUser(user)">Edit</button>
+                               </td>
+                               <td>
+                                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaldelete" ng-click="selectUser(user)">Delete</button>
+                               </td>
+                             </tr>
+
+                           </tbody>
+                         </table>
+</body>
+</html>
